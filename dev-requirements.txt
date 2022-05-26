@@ -8,4 +8,4 @@ pytest==7.1.2
 pytest-cov==3.0.0
 
 # Mypy test requirements
-mypy==0.950
+mypy==0.960
