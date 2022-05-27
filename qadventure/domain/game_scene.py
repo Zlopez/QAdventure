@@ -1,4 +1,7 @@
-from typing import Optional
+from __future__ import annotations
+from typing import List, Optional
+
+from .scene_option import SceneOption
 
 
 class GameScene:
@@ -16,7 +19,12 @@ class GameScene:
     """
 
     def __init__(
-        self, id: str, text: str, image: str, set_variable: str, options: Optional[list]
+        self,
+        id: str,
+        text: str,
+        image: Optional[str],
+        set_variable: Optional[str],
+        options: List[SceneOption],
     ) -> None:
         """
         Initialize new GameScene object.
@@ -35,3 +43,37 @@ class GameScene:
         self.image = image
         self.set_variable = set_variable
         self.options = options
+
+    @classmethod
+    def from_dict(cls, adict: dict) -> GameScene:
+        """
+        Creates object from dictionary.
+
+        Params:
+            adict: A dictionary representing the object.
+
+        Returns:
+            Object of this class.
+        """
+        return cls(
+            id=adict["id"],
+            text=adict["text"],
+            image=adict["image"],
+            set_variable=adict["set_variable"],
+            options=[SceneOption.from_dict(option) for option in adict["options"]],
+        )
+
+    def to_dict(self) -> dict:
+        """
+        Dumps object to dictionary.
+
+        Returns:
+           Dictionary representing this object.
+        """
+        return {
+            "id": self.id,
+            "text": self.text,
+            "image": self.image,
+            "set_variable": self.set_variable,
+            "options": [option.to_dict() for option in self.options],
+        }
