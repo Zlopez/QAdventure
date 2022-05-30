@@ -18,12 +18,12 @@ class GameScenario:
     """
 
     def __init__(
-            self,
-            name: str,
-            description: Optional[str],
-            image: Optional[str],
-            start_scene: str,
-            scene_dict: Dict[GameScene]
+        self,
+        name: str,
+        description: Optional[str],
+        image: Optional[str],
+        start_scene: str,
+        scene_dict: Dict[str, GameScene],
     ) -> None:
         """
         Initialize new GameScenario object.
@@ -58,7 +58,10 @@ class GameScenario:
             description=adict["description"],
             image=adict["image"],
             start_scene=adict["start_scene"],
-            scene_dict={key: GameScene.from_dict(value) for key, value in adict["scene_dict"].items()},
+            scene_dict={
+                key: GameScene.from_dict(value)
+                for key, value in adict["scene_dict"].items()
+            },
         )
 
     def to_dict(self) -> dict:
@@ -73,5 +76,7 @@ class GameScenario:
             "description": self.description,
             "image": self.image,
             "start_scene": self.start_scene,
-            "scene_dict": {key : value.to_dict() for key, value in self.scene_dict.items()},
+            "scene_dict": {
+                key: value.to_dict() for key, value in self.scene_dict.items()
+            },
         }

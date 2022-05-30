@@ -16,15 +16,9 @@ class TestGameScenarioInit:
         image = b"image"
         start_scene = "scene_id"
         game_scene = GameScene(
-            id=start_scene,
-            text="text",
-            image=None,
-            set_variable=None,
-            options=[]
+            id=start_scene, text="text", image=None, set_variable=None, options=[]
         )
-        scene_dict = {
-            start_scene: game_scene
-        }
+        scene_dict = {start_scene: game_scene}
 
         # Test
         game_scenario = GameScenario(
@@ -58,15 +52,8 @@ class TestGameScenarioFromDict:
         image = b"image"
         start_scene = "scene_id"
         game_scene = GameScene(
-            id=start_scene,
-            text="text",
-            image=None,
-            set_variable=None,
-            options=[]
+            id=start_scene, text="text", image=None, set_variable=None, options=[]
         )
-        scene_dict = {
-            start_scene: game_scene
-        }
 
         # Test
         game_scenario = GameScenario.from_dict(
@@ -103,15 +90,9 @@ class TestGameScenarioToDict:
         image = b"image"
         start_scene = "scene_id"
         game_scene = GameScene(
-            id=start_scene,
-            text="text",
-            image=None,
-            set_variable=None,
-            options=[]
+            id=start_scene, text="text", image=None, set_variable=None, options=[]
         )
-        scene_dict = {
-            start_scene: game_scene
-        }
+        scene_dict = {start_scene: game_scene}
 
         # Test
         game_scenario = GameScenario(
@@ -130,6 +111,5 @@ class TestGameScenarioToDict:
             "start_scene": start_scene,
             "scene_dict": {start_scene: game_scene.to_dict()},
         }
-
 
         assert exp_dict == game_scenario.to_dict()
