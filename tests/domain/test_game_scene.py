@@ -34,7 +34,7 @@ class TestGameSceneInit:
         assert game_scene.options == options
 
 
-class TestSceneOptionFromDict:
+class TestGameSceneFromDict:
     """
     Test class for `qadventure.domain.GameScene.from_dict` method.
     """
@@ -85,7 +85,7 @@ class TestSceneOptionFromDict:
             assert option.to_dict() in [option.to_dict() for option in options]
 
 
-class TestSceneOptionToDict:
+class TestGameSceneToDict:
     """
     Test class for `qadventure.domain.GameScene.to_dict` method.
     """
