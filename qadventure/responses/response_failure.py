@@ -3,6 +3,7 @@ import traceback
 from typing import Any, List
 
 from qadventure.responses import Response
+from qadventure.requests import Request
 
 
 class ResponseFailure(Response):
@@ -17,6 +18,7 @@ class ResponseFailure(Response):
         traceback: Exception traceback as string.
     """
 
+    INVALID_REQUEST_ERROR = "InvalidRequestError"
     GAME_MANAGER_ERROR = "GameManagerError"
     SAVE_MANAGER_ERROR = "SaveManagerError"
     SCENARIO_MANAGER_ERROR = "ScenarioManagerError"
@@ -126,6 +128,23 @@ class ResponseFailure(Response):
         """
         response = ResponseFailure(
             type=ResponseFailure.SCENARIO_MANAGER_ERROR, message=message
+        )
+
+        return response
+
+    @classmethod
+    def invalid_request_error(cls, request: Request) -> ResponseFailure:
+        """
+        Creates response for invalid request failure.
+
+        Params:
+            request: Invalid request to add to this error
+
+        Returns:
+            ResponseFailure object
+        """
+        response = ResponseFailure(
+            type=ResponseFailure.INVALID_REQUEST_ERROR, message=str(request.errors)
         )
 
         return response

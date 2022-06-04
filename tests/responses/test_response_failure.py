@@ -1,6 +1,7 @@
 import traceback
 
 from qadventure.responses import ResponseFailure
+from qadventure.requests import Request
 
 
 class TestResponseFailureInit:
@@ -115,3 +116,23 @@ class TestResponseFailureScenarioManagerError:
             "message": "Exception: This is scenario manager heresy!",
         }
         assert response.traceback == traceback.format_tb(exception.__traceback__)
+
+
+class TestResponseFailureInvalidRequestError:
+    """
+    Test class for `qadventure.responses.ResponseFailure.invalid_request_error` method.
+    """
+
+    def test_invalid_request_error(self):
+        """
+        Assert that invalid_request error response is created correctly.
+        """
+        request = Request()
+        request.add_error("param", "You shall not pass!")
+        response = ResponseFailure.invalid_request_error(request=request)
+
+        assert response.type == ResponseFailure.INVALID_REQUEST_ERROR
+        assert response.value == {
+            "type": ResponseFailure.INVALID_REQUEST_ERROR,
+            "message": "[{'parameter': 'param', 'error': 'You shall not pass!'}]",
+        }
