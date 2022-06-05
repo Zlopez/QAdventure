@@ -53,3 +53,18 @@ class GameState:
             "current_scene": self.current_scene,
             "variables": self.variables,
         }
+
+    def __eq__(self, other: object) -> bool:
+        """
+        Compare equal method for object.
+
+        Params:
+            other: object to compare with
+
+        Return:
+            Compare result.
+        """
+        if not isinstance(other, GameState):
+            raise NotImplementedError
+
+        return self.to_dict() == other.to_dict()

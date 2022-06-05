@@ -1,3 +1,5 @@
+import pytest
+
 from qadventure.domain import GameScene, SceneOption
 
 
@@ -135,3 +137,80 @@ class TestGameSceneToDict:
         }
 
         assert exp_dict == game_scene.to_dict()
+
+
+class TestGameSceneEq:
+    """
+    Test class for `qadventure.domain.GameScene.__eq__` method.
+    """
+
+    @pytest.mark.parametrize(
+        "option1,option2,expected",
+        [
+            (
+                GameScene(
+                    id="start_scene",
+                    text="",
+                    image=b"image",
+                    set_variable=None,
+                    options=[],
+                ),
+                GameScene(
+                    id="start_scene",
+                    text="",
+                    image=b"image",
+                    set_variable=None,
+                    options=[],
+                ),
+                True,
+            ),
+            (
+                GameScene(
+                    id="start_scene",
+                    text="",
+                    image=b"image",
+                    set_variable=None,
+                    options=[],
+                ),
+                GameScene(
+                    id="some_scene",
+                    text="",
+                    image=b"image",
+                    set_variable=None,
+                    options=[],
+                ),
+                False,
+            ),
+        ],
+    )
+    def test_eq(self, option1, option2, expected):
+        """
+        Assert that equal operation is working correctly.
+        """
+        # Asserts
+        result = option1 == option2
+        assert result == expected
+
+    def test_eq_exception(self):
+        """
+        Assert that exception is thrown when object class is not correct.
+        """
+        # Preparation
+        scene_id = "id"
+        text = "Text on the scene"
+        image = b"image"
+        set_variable = ""
+        options = []
+
+        # Test
+        game_scene = GameScene(
+            id=scene_id,
+            text=text,
+            image=image,
+            set_variable=set_variable,
+            options=options,
+        )
+
+        # Asserts
+        with pytest.raises(NotImplementedError):
+            game_scene == "string"

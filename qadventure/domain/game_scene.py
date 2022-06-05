@@ -77,3 +77,18 @@ class GameScene:
             "set_variable": self.set_variable,
             "options": [option.to_dict() for option in self.options],
         }
+
+    def __eq__(self, other: object) -> bool:
+        """
+        Compare equal method for object.
+
+        Params:
+            other: object to compare with
+
+        Return:
+            Compare result.
+        """
+        if not isinstance(other, GameScene):
+            raise NotImplementedError
+
+        return self.to_dict() == other.to_dict()

@@ -1,3 +1,5 @@
+import pytest
+
 from qadventure.domain import GameState
 
 
@@ -71,3 +73,60 @@ class TestGameStateToDict:
         }
 
         assert exp_dict == game_state.to_dict()
+
+
+class TestGameStateEq:
+    """
+    Test class for `qadventure.domain.GameState.__eq__` method.
+    """
+
+    @pytest.mark.parametrize(
+        "option1,option2,expected",
+        [
+            (
+                GameState(
+                    current_scene="start_scene",
+                    variables={},
+                ),
+                GameState(
+                    current_scene="start_scene",
+                    variables={},
+                ),
+                True,
+            ),
+            (
+                GameState(
+                    current_scene="start_scene",
+                    variables={},
+                ),
+                GameState(
+                    current_scene="start_scene",
+                    variables={"variable": True},
+                ),
+                False,
+            ),
+        ],
+    )
+    def test_eq(self, option1, option2, expected):
+        """
+        Assert that equal operation is working correctly.
+        """
+        # Asserts
+        result = option1 == option2
+        assert result == expected
+
+    def test_eq_exception(self):
+        """
+        Assert that exception is thrown when object class is not correct.
+        """
+
+        # Preparation
+        current_scene = "scene_id"
+        variables = {}
+
+        # Test
+        game_state = GameState(current_scene=current_scene, variables=variables)
+
+        # Asserts
+        with pytest.raises(NotImplementedError):
+            game_state == "string"
