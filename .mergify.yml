@@ -1,7 +1,9 @@
 queue_rules:
   - name: default
     conditions:
-      - check-success=fedora/check
+      - check-success=build (3.8)
+      - check-success=build (3.9)
+      - check-success=build (3.10)
 
 pull_request_rules:
   - name: dependabot
@@ -13,7 +15,9 @@ pull_request_rules:
     - author=dependabot[bot]
     - label!=no-mergify
     - "#changes-requested-reviews-by=0"
-    - check-success=fedora/check
+    - check-success=build (3.8)
+    - check-success=build (3.9)
+    - check-success=build (3.10)
 
   - name: default
     actions:
@@ -23,4 +27,6 @@ pull_request_rules:
     conditions:
     - label!=no-mergify
     - '#approved-reviews-by>=1'
-    - check-success=fedora/check
+    - check-success=build (3.8)
+    - check-success=build (3.9)
+    - check-success=build (3.10)
