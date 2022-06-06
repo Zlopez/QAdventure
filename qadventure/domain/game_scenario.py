@@ -80,3 +80,18 @@ class GameScenario:
                 key: value.to_dict() for key, value in self.scene_dict.items()
             },
         }
+
+    def __eq__(self, other: object) -> bool:
+        """
+        Compare equal method for object.
+
+        Params:
+            other: object to compare with
+
+        Return:
+            Compare result.
+        """
+        if not isinstance(other, GameScenario):
+            raise NotImplementedError
+
+        return self.to_dict() == other.to_dict()
