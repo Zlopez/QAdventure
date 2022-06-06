@@ -1,12 +1,12 @@
 from unittest import mock
 
-from qadventure.use_cases import LoadGameUseCase
+from qadventure.use_cases import LoadScenarioUseCase
 from qadventure import responses
 
 
 class TestLoadGameUseCaseInit:
     """
-    Test class for `qadventure.use_cases.LoadGameUseCase.__init__` method
+    Test class for `qadventure.use_cases.LoadScenarioUseCase.__init__` method
     """
 
     def test_init(self):
@@ -15,14 +15,14 @@ class TestLoadGameUseCaseInit:
         """
         manager = mock.Mock()
 
-        use_case = LoadGameUseCase(save_manager=manager)
+        use_case = LoadScenarioUseCase(scenario_manager=manager)
 
-        assert use_case.save_manager == manager
+        assert use_case.scenario_manager == manager
 
 
-class TestLoadGameUseCaseLoad:
+class TestLoadScenarioUseCaseLoad:
     """
-    Test class for `qadventure.use_cases.LoadGameUseCase.load` method
+    Test class for `qadventure.use_cases.LoadScenarioUseCase.load` method
     """
 
     def test_load(self):
@@ -31,14 +31,14 @@ class TestLoadGameUseCaseLoad:
         is returned when no error is encountered.
         """
         manager = mock.Mock()
-        result_dict = {"game_state": mock.Mock(), "scenario_hash": "hash"}
+        result_dict = {"game_scenario": mock.Mock(), "scenario_hash": "hash"}
         manager.load.return_value = result_dict
 
         request = mock.MagicMock()
         request.file_path = "some/path"
         request.__bool__.return_value = True
 
-        use_case = LoadGameUseCase(save_manager=manager)
+        use_case = LoadScenarioUseCase(scenario_manager=manager)
 
         result = use_case.load(request)
 
@@ -63,7 +63,7 @@ class TestLoadGameUseCaseLoad:
         request.__bool__.return_value = False
         request.errors = errors
 
-        use_case = LoadGameUseCase(save_manager=manager)
+        use_case = LoadScenarioUseCase(scenario_manager=manager)
 
         result = use_case.load(request)
 
@@ -76,7 +76,7 @@ class TestLoadGameUseCaseLoad:
 
     def test_load_failure(self):
         """
-        Assert that the load is called correctly and failure response
+        Assert that the save is called correctly and failure response
         is returned when manager raises exception.
         """
         manager = mock.Mock()
@@ -86,7 +86,7 @@ class TestLoadGameUseCaseLoad:
         request.file_path = "some/path"
         request.__bool__.return_value = True
 
-        use_case = LoadGameUseCase(save_manager=manager)
+        use_case = LoadScenarioUseCase(scenario_manager=manager)
 
         result = use_case.load(request)
 
@@ -94,6 +94,6 @@ class TestLoadGameUseCaseLoad:
         assert type(result) is responses.ResponseFailure
         assert bool(result) is False
         assert result.value == {
-            "type": responses.ResponseFailure.SAVE_MANAGER_ERROR,
+            "type": responses.ResponseFailure.SCENARIO_MANAGER_ERROR,
             "message": "Exception: This is heresy!",
         }

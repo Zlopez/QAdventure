@@ -1,9 +1,10 @@
 import hashlib
 import json
 import logging
+from typing import Dict, Optional, Union
 
 from . import ScenarioManager
-from qadventure.domain import GameScenario, GameScene
+from qadventure.domain import GameScenario
 
 
 _logger = logging.getLogger(__name__)
@@ -31,14 +32,19 @@ class JSONScenarioManager(ScenarioManager):
         """
         _logger.info("Loading scenario from {}".format(file_path))
 
-        output = {"game_scenario": None, "scenario_hash": ""}
+        output: Dict[str, Union[Optional[GameScenario], str]] = {
+            "game_scenario": None,
+            "scenario_hash": "",
+        }
 
         scenario_dict = {}
 
         with open(file_path) as f:
             scenario_dict = json.load(f)
 
-        output["scenario_hash"] = hashlib.md5(str(scenario_dict).encode()).hexdigest()
+        output["scenario_hash"] = hashlib.sha256(
+            str(scenario_dict).encode()
+        ).hexdigest()
 
         if scenario_dict["image"]:
             with open(scenario_dict["image"], "rb") as f:

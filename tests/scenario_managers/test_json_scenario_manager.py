@@ -39,14 +39,22 @@ class TestJSONSaveManagerLoad:
             text="",
             image=scene_image,
             set_variable=None,
-            options=[SceneOption(order=1, text="", show_if=None, hide_if=None, target_scene="start_scene")]
+            options=[
+                SceneOption(
+                    order=1,
+                    text="",
+                    show_if=None,
+                    hide_if=None,
+                    target_scene="start_scene",
+                )
+            ],
         )
         game_scenario = GameScenario(
             name="name",
             description="",
             image=scenario_image,
             start_scene="start_scene",
-            scene_dict={"start_scene": game_scene}
+            scene_dict={"start_scene": game_scene},
         )
 
         # Change the images to path for json dump
@@ -58,11 +66,9 @@ class TestJSONSaveManagerLoad:
         game_scenario_dict["scene_dict"] = {"start_scene": game_scene_dict}
 
         with open(file_path, "w") as f:
-            json.dump(
-                game_scenario_dict, f
-            )
+            json.dump(game_scenario_dict, f)
 
-        scenario_hash = hashlib.md5(str(game_scenario_dict).encode()).hexdigest()
+        scenario_hash = hashlib.sha256(str(game_scenario_dict).encode()).hexdigest()
 
         # Test
         output = self.scenario_manager.load(

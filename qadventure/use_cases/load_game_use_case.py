@@ -25,7 +25,7 @@ class LoadGameUseCase:
     def load(self, request: LoadGameRequest) -> Response:
         """
         Call the load method on the save manager.
-        This method will handle any error that happens when saving game.
+        This method will handle any error that happens when loading saved game.
 
         Params:
             request: Request to handle.
