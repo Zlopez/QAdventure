@@ -1,6 +1,6 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QAction
 
 
 class MainWindow(QMainWindow):
@@ -14,7 +14,36 @@ class MainWindow(QMainWindow):
         """
         super().__init__()
 
+        self.initUI()
+
+    def initUI(self):
+        """
+        Initialize the UI of the application.
+        """
         self.setWindowTitle("QAdventure")
+
+        self.load_scenario_action = QAction("&Open scenario", self)
+        self.load_scenario_action.setStatusTip("Load scenario JSON file")
+
+        self.load_game_action = QAction("&Load game", self)
+        self.load_game_action.setStatusTip("Load saved game")
+
+        self.save_game_action = QAction("&Save game", self)
+        self.save_game_action.setStatusTip("Save current progress in game")
+
+        self.restart_game_action = QAction("&Restart game", self)
+        self.restart_game_action.setStatusTip("Restart current scenario")
+
+        self.menubar = self.menuBar()
+        self.game_menu = self.menubar.addMenu("&Game")
+        self.game_menu.addAction(self.load_scenario_action)
+        self.game_menu.addSeparator()
+        self.game_menu.addAction(self.load_game_action)
+        self.game_menu.addAction(self.save_game_action)
+        self.game_menu.addSeparator()
+        self.game_menu.addAction(self.restart_game_action)
+
+        self.statusBar()
 
 
 # Main
