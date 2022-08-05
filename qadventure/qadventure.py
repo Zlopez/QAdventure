@@ -27,12 +27,15 @@ class MainWindow(QMainWindow):
 
         self.load_game_action = QAction("&Load game", self)
         self.load_game_action.setStatusTip("Load saved game")
+        self.load_game_action.setDisabled(True)
 
         self.save_game_action = QAction("&Save game", self)
         self.save_game_action.setStatusTip("Save current progress in game")
+        self.save_game_action.setDisabled(True)
 
         self.restart_game_action = QAction("&Restart game", self)
         self.restart_game_action.setStatusTip("Restart current scenario")
+        self.restart_game_action.setDisabled(True)
 
         self.menubar = self.menuBar()
         self.game_menu = self.menubar.addMenu("&Game")
@@ -42,6 +45,8 @@ class MainWindow(QMainWindow):
         self.game_menu.addAction(self.save_game_action)
         self.game_menu.addSeparator()
         self.game_menu.addAction(self.restart_game_action)
+
+        self.setGeometry(0, 0, 800, 600)
 
         self.statusBar()
 
