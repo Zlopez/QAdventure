@@ -1,4 +1,7 @@
-from qadventure.qadventure import MainWindow
+from unittest.mock import Mock, patch
+from os import path
+
+from qadventure.main import MainWindow
 
 
 class TestMainWindowInit:
@@ -39,3 +42,33 @@ class TestMainWindowInit:
         assert window.restart_game_action in window.game_menu.actions()
         assert window.geometry().width() == 800
         assert window.geometry().height() == 600
+
+
+class TestMainWindowOpenScenario:
+    """
+    Test class for `qadventure.qadventure.MainWindow.open_scenario` method.
+    """
+
+    @patch("qadventure.main.QFileDialog")
+    def test_open_scenario(self, mock_file_dialog, qtbot):
+        """
+        Assert that file is loaded correctly.
+        """
+        # Preparation
+        window = MainWindow()
+
+        tutorial_scenario_path = path.abspath(
+            "scenarios/QAdventure tutorial/qadventure_tutorial.json"
+        )
+
+        mock_file_dialog_instance = Mock()
+        mock_file_dialog_instance.selectedFiles.return_value = [tutorial_scenario_path]
+
+        mock_file_dialog.return_value = mock_file_dialog_instance
+
+        # Test
+        window.open_scenario()
+
+        # Asserts
+        assert window.game_scenario.name == "QAdventure tutorial"
+        assert window.game_state.current_scene == "start_scene"

@@ -1,0 +1,30 @@
+{
+    "name": "QAdventure tutorial",
+    "description": "This is a QAdventure application tutorial game. It will show you basics of the QAdventure engine.",
+    "image": "images/QAdventure_tutorial.png",
+    "start_scene": "start_scene",
+    "scene_dict": {
+        "start_scene": {
+            "id": "start_scene",
+            "text": "This is a start scene of the tutorial game.",
+            "image": "images/QAdventure_tutorial.png",
+            "set_variable": "",
+            "options": [
+                {
+                    "order": 1,
+                    "text": "This option will move us to end_scene.",
+                    "show_if": "",
+                    "hide_if": "",
+                    "target_scene": "end_scene"
+                }
+            ]
+        },
+        "end_scene": {
+            "id": "end_scene",
+            "text": "This is a final scene of the tutorial game. This scene has no options to click on. This should either be used as Game Over screen or Game Completed screen.",
+            "image": "images/QAdventure_tutorial.png",
+            "set_variable": "",
+            "options": []
+        }
+    }
+}
