@@ -96,7 +96,7 @@ toml = ["tomli"]
 
 [[package]]
 name = "diff-cover"
-version = "7.0.2"
+version = "7.2.0"
 description = "Run coverage and linting reports on diffs"
 category = "dev"
 optional = false
@@ -465,7 +465,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "7f6297d6570403e18d2eff5f72cafbb5d775fa6500561de78af1451f90b61d3a"
+content-hash = "fde59ae51302e01b6939b9dee4d07be48cec004c433951f0e7251def11378153"
 
 [metadata.files]
 attrs = [
@@ -564,8 +564,8 @@ coverage = [
     {file = "coverage-6.5.0.tar.gz", hash = "sha256:f642e90754ee3e06b0e7e51bce3379590e76b7f76b708e1a71ff043f87025c84"},
 ]
 diff-cover = [
-    {file = "diff_cover-7.0.2-py3-none-any.whl", hash = "sha256:c0a08229edca5aa46da061e193d3d163ed9853ba119c6a6dd332c25f874b0ffc"},
-    {file = "diff_cover-7.0.2.tar.gz", hash = "sha256:38435447dad32abb7e01d1c3942539021a522388a3b585d583a6e207cc133497"},
+    {file = "diff_cover-7.2.0-py3-none-any.whl", hash = "sha256:16bd4cb5f90afcc5372b668974a33a560e0030df8c2fef425a82d83b15d4662c"},
+    {file = "diff_cover-7.2.0.tar.gz", hash = "sha256:309bcfddbc13650b121462252f3f6967ac196816f8b91e965a2e0c02ba15cc92"},
 ]
 exceptiongroup = [
     {file = "exceptiongroup-1.0.0-py3-none-any.whl", hash = "sha256:2ac84b496be68464a2da60da518af3785fff8b7ec0d090a581604bc870bdee41"},
