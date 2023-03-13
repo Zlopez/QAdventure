@@ -24,7 +24,7 @@ python = "^3.8"
 PyQt5 = "^5.15.9"
 
 [tool.poetry.dev-dependencies]
-bandit = "1.7.4"
+bandit = "1.7.5"
 black = "23.1.0"
 coverage = "7.2.1"
 diff-cover = "7.5.0"
