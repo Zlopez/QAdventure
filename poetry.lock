@@ -708,14 +708,14 @@ doc = ["sphinx", "sphinx-rtd-theme"]
 
 [[package]]
 name = "pytest-xvfb"
-version = "2.0.0"
-description = "A pytest plugin to run Xvfb for tests."
+version = "3.0.0"
+description = "A pytest plugin to run Xvfb (or Xephyr/Xvnc) for tests."
 category = "dev"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.7"
 files = [
-    {file = "pytest-xvfb-2.0.0.tar.gz", hash = "sha256:c4ba642de05499940db7f65ee111621939be513e3e75c3da9156b7235e2ed8cf"},
-    {file = "pytest_xvfb-2.0.0-py3-none-any.whl", hash = "sha256:6d21b46f099c06d6b8b200e73341da3adb73d67e9139c55d617930881779360b"},
+    {file = "pytest-xvfb-3.0.0.tar.gz", hash = "sha256:3746ab1f4d1159f03f751638d053689ccd284291b38b8fb03d3ebbe7bf69cfc0"},
+    {file = "pytest_xvfb-3.0.0-py3-none-any.whl", hash = "sha256:352f247c788457ccdfcfeec8a47a2a6594c8eaf22f0302dae9e2635bb23975c2"},
 ]
 
 [package.dependencies]
@@ -858,4 +858,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "7a433a6d013d21ab66888be927110059674a9b0f73ac40692d78a474530e9cbb"
+content-hash = "62775fb554bd4005494070031b01e48a227c4b32d6006d8c3268d82119fbc0b2"
