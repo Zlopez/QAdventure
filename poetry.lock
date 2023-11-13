@@ -170,13 +170,13 @@ toml = ["tomli"]
 
 [[package]]
 name = "diff-cover"
-version = "8.0.0"
+version = "8.0.1"
 description = "Run coverage and linting reports on diffs"
 optional = false
 python-versions = ">=3.8.10,<4.0.0"
 files = [
-    {file = "diff_cover-8.0.0-py3-none-any.whl", hash = "sha256:330b1a655c53c211ffee0dd23c8fee10a2e3539d26dc2362dd3f7606641b8c32"},
-    {file = "diff_cover-8.0.0.tar.gz", hash = "sha256:0995b78a1d5101f5d8922006220c070b18e32a5dbb4a96a073a1941705fe71e7"},
+    {file = "diff_cover-8.0.1-py3-none-any.whl", hash = "sha256:1eb651e7d4e25d9d7b4b246c4abe3e9e5645f3856f92c104fca04701fc0eb093"},
+    {file = "diff_cover-8.0.1.tar.gz", hash = "sha256:cc39d199eb72fe41bcdcfee164eb5b591533b4c625580e3f9a9acc6869064d7c"},
 ]
 
 [package.dependencies]
@@ -803,4 +803,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.10"
-content-hash = "0627748a19d73f29d4fb58645df309bfc4b38e8aa15ebebd8196d9f2ca04ae67"
+content-hash = "585e8c977c2f05547a85027777b6378037f316875c53e1c45eb2c8a64f5dc8b5"
