@@ -32,7 +32,7 @@ flake8 = "6.1.0"
 mock = "5.1.0"
 pytest = "7.4.4"
 pytest-cov = "4.1.0"
-pytest-qt = "4.2.0"
+pytest-qt = "4.3.1"
 pytest-xvfb = "3.0.0"
 
 # Mypy test requirements
