@@ -6,12 +6,12 @@ from qadventure.domain import GameScene, GameScenario, SceneOption
 from qadventure.scenario_managers import JSONScenarioManager
 
 
-class TestJSONSaveManagerLoad:
+class TestJSONScenarionManagerLoad:
     """
-    Test class for `qadventure.save_managers.JSONSaveManager.load` method.
+    Test class for `qadventure.save_managers.JSONScenarioManager.load` method.
     """
 
-    def setup(self):
+    def setup_method(self):
         """
         Initialize object to test.
         """
