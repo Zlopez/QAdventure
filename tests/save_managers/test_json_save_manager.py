@@ -52,7 +52,7 @@ class TestJSONSaveManagerLoad:
     Test class for `qadventure.save_managers.JSONSaveManager.load` method.
     """
 
-    def setup_load(self):
+    def setup_method(self):
         """
         Initialize object to test.
         """
