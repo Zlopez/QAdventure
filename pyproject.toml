@@ -26,7 +26,7 @@ PyQt5 = "^5.15.9"
 [tool.poetry.dev-dependencies]
 bandit = "1.7.7"
 black = "24.2.0"
-coverage = "7.4.1"
+coverage = "7.4.2"
 diff-cover = "8.0.3"
 flake8 = "7.0.0"
 mock = "5.1.0"
